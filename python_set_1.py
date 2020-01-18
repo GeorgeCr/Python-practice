@@ -1,5 +1,6 @@
 # 1. Find the largest common divisor of multiple numbers. Define a function with variable number of parameters to
 # resolve this.
+import math
 
 
 def largest_common_divisor(a, b):
@@ -24,6 +25,8 @@ def largest_common_divisor_from_list(*args):
 
 print(">>>>>>>>>>> Largest common divisor from a list <<<<<<<<<<")
 print(largest_common_divisor_from_list(24, 20, 12, 20, 20))
+print('\n')
+
 
 
 # 2. Write a function that calculates how many vowels are in a string.
@@ -42,6 +45,7 @@ def num_of_vowels(string):
 
 print(">>>>>>>>>>> Number of vowels in a string <<<<<<<<<<<")
 print(num_of_vowels("George"))
+print('\n')
 
 
 # 3. Write a function that returns the number of words that exist in a string. Words are separated by spaces,
@@ -62,7 +66,7 @@ def get_num_of_words_in_string(string):
 
 print(">>>>>>>>>>> Number of words in a string <<<<<<<<<<<")
 print(get_num_of_words_in_string("Salut bai, Leo Geo, cmf? Bine; tu!."))
-
+print('\n')
 
 # 4. Write a function that receives two strings as parameters and returns the number of occurrences of the first
 # character string in the second.
@@ -78,7 +82,7 @@ def occurrences(str1, str2):
 
 print(">>>>>>>>>>> Number of occurrences of first char of str1 in str2 <<<<<<<<<<<")
 print(occurrences("georgel", "purcel georgggel"))
-
+print('\n')
 
 # 5.Write a function that checks whether a character string contains special characters (\r, \t, \n, \a, \b, \f, \v)
 
@@ -88,7 +92,9 @@ def is_special_character(char):
     return False
 
 
-def has_special_characters(string):
+def has_special_characters(string):1
+    str1 = string[:]
+    for char in str1:
     str = string[:]
     for char in str:
         if is_special_character(char):
@@ -98,7 +104,7 @@ def has_special_characters(string):
 
 print(">>>>>>>>>>> Does string have special characters? <<<<<<<<<<<")
 print(has_special_characters('Georgel purcel\nlala'))
-
+print('\n')
 
 # 6. Write a function that converts a string of characters written in UpperCamelCase into lowercase_with_underscores.
 
@@ -137,7 +143,7 @@ def split_into_words(str1):
 
 print(">>>>>>>>>>> Transform CamelCase to camel_case <<<<<<<<<<<")
 print(split_into_words('UpperCamelCase'))
-
+print('\n')
 
 # 7. Write a function that receives a char_len integer and a variable number of strings (strings) and check that each
 # two neighboring strings follow the following rule: the second string starts with the last char_len characters of
@@ -156,6 +162,56 @@ def neighbours(char_len, strings):
 
 print(">>>>>>>>>>> word game pheasant <<<<<<<<<<<")
 print(neighbours(3, ['George', 'rge']))
+print('\n')
+
+# 8. Give a string that represents a polynomial (Ex: "3x ^ 3 + 5x ^ 2 - 2x - 5") and a number (whole or float).
+# Evaluate the polynomial for the given value.
+#
+#
+# 9. Write a function that returns the largest prime number from a
+# string given as a parameter or -1 if the character string contains no prime number. Ex: input:
+# 'ahsfaisd35biaishai23isisvdshcbsi271cidsbfsd97sidsda'; output: 271
+
+
+# Func for if this is a digit
+# Func for prime
+
+def is_digit(char):
+    if '0' <= char <= '9':
+        return True
+    return False
+
+
+def is_prime(n):
+    div_count = 2
+    for i in range(2, math.floor(n / 2)):
+        if n % i == 0:
+            div_count += 1
+    return div_count == 2
+
+
+def largest_prime(string):
+    current_number = ""
+    numbers = []
+    for char in string:
+        if is_digit(char):
+            current_number += char
+        else:
+            if current_number != "":
+                numbers.append(int(current_number))
+                current_number = ""
+    print(numbers)
+    current_max_prime = -1
+    for number in numbers:
+        if is_prime(number):
+            if number > current_max_prime:
+                current_max_prime = number
+    return current_max_prime
+
+
+print(">>>>>>>>>>> Largest prime in string <<<<<<<<<<<")
+print(largest_prime("ahsfaisd35bi31231231!!@#SADASDAaishai23isisvd3359shcbsi271cid8089sbfsd97sidsda"))
+print('\n')
 
 # 8. Give a string that represents a polynomial (Ex: "3x ^ 3 + 5x ^ 2 - 2x - 5") and a number (whole or float).
 # Evaluate the polynomial for the given value. 9. Write a function that returns the largest prime number from a
